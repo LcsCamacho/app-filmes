@@ -2,24 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@media (prefers-color-scheme: dark) {
+  a,h1,h2,h3,h4,h5,h6,p,span {
+    color: white;
+  }
+}
+.dark-linear-gradient {
+ background: linear-gradient(24deg, #6100C2 1.89%, #1C171E 75.65%, #191817 78.98%);
+}
+.text-white {
+  color:#fff;
+  opacity:1;
+}
+.letter-spacing-1 {
+  letter-spacing: 4px;
+}
+.letter-spacing-2 {
+  letter-spacing: 8px;
+}
+.letter-spacing-3 {
+  letter-spacing: 12px;
+}
+.sign-in-form {
+  width: 600px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@media (max-width:600px) {
+  .sign-in-form {
+    width: 95%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+.bg-purple {
+  background-color: #6100C2;
 }
 
-.dark-linear-gradient {
- background: linear-gradient(24deg, #6100C2 1.89%, #1C171E 75.65%, #191817 78.98%);
+.w-60px {
+  width: 60px;
 }

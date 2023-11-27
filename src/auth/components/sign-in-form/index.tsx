@@ -2,7 +2,9 @@
 import { FormEvent, useRef } from "react";
 import { AuthService } from "../../services";
 import { useRouter } from "next/navigation";
-import { Coffee as CoffeeSVG } from "../../svgs/coffe";
+import CoffeeSVG from "@/../public/svgs/coffee.svg"
+import Image from "next/image"
+import { Button, Input, } from "@nextui-org/react";
 
 export const SignInForm = () => {
   const refEmail = useRef<HTMLInputElement>(null);
@@ -26,48 +28,53 @@ export const SignInForm = () => {
     }
   };
   return (
-    <>
-      <div className="title flex gap-2">
-        <CoffeeSVG />
-        <h1 className="text-white font-bold text-lg">WATCH</h1>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 items-center justify-center">
+        <Image src={CoffeeSVG} alt="svg café xicara" />
+        <h1 className="text-white font-bold text-lg letter-spacing-1">WATCH</h1>
       </div>
-      <h3 className="text-white">Enjoy the newest movies</h3>
       <form
         onSubmit={handleLogin}
-        className="flex flex-col bg-white rounded shadow-lg p-12 mt-12"
+        className="flex flex-col gap-2 sign-in-form"
       >
-        <label className="font-semibold text-xs" htmlFor="usernameField">
+        <label className="font-semibold text-xs text-white" htmlFor="usernameField">
           Username or Email
         </label>
-        <input
+        <Input
           ref={refEmail}
-          className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2"
           type="text"
+          variant="underlined"
+          color="primary"
+          className="text-white"
         />
-        <label className="font-semibold text-xs mt-3" htmlFor="passwordField">
+        <label className="font-semibold text-xs mt-3 text-white" htmlFor="passwordField">
           Password
         </label>
-        <input
+        <Input
           ref={refPassword}
-          className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2"
           type="password"
+          variant="underlined"
+          color="primary"
+          className="text-white"
         />
-        <button
-          type="submit"
-          className="flex items-center justify-center h-12 py-3 px-6 w-64 bg-[#6100C2] mt-8 rounded font-semibold text-sm text-white"
+        <footer
+          className="flex flex-col gap-4 mt-2"
         >
-          Login
-        </button>
-        <div className="flex mt-6 justify-center text-xs">
-          <a className="text-blue-400 hover:text-blue-500" href="#">
-            Forgot Password
-          </a>
-          <span className="mx-2 text-gray-300">/</span>
-          <a className="text-blue-400 hover:text-blue-500" href="#">
-            Sign Up
-          </a>
-        </div>
+          <Button
+            type="submit"
+            color="primary"
+            className="mt-3 bg-purple"
+          >
+            Login
+          </Button>
+            <a className="text-white hover:underline" href="#">
+              Esqueci a senha
+            </a>
+            <a className="text-white hover:underline" href="#">
+              Cadastrar
+            </a>
+        </footer>
       </form>
-    </>
+    </div>
   );
 };
