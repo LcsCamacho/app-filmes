@@ -15,9 +15,13 @@ export default async function Filmes() {
     vod_play_url: "https://www.youtube.com/watch?v=6KErczPBROQty7QoIsaa6wJYXZi",
   };
 
-  const filmes = {
+  const filmesMock = {
     list: [filme1],
   };
+
+  const filmes = await FilmesServices.getWithIds([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  ]);
 
   return (
     <div className="w-full h-full">

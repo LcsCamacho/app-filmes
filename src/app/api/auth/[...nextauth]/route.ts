@@ -1,6 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
+import { BASE_URL_NEXT } from "../../../../constants/baseUrl";
 
 const nextAuthOptions: NextAuthOptions = {
   providers: [
@@ -15,9 +16,9 @@ const nextAuthOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials, req) {
-        console.log("AUTHORIZE")
+        console.log("AUTHORIZE");
         const body = JSON.stringify(credentials);
-        const res = await axios.post("http://localhost:3000/api/auth", body, {
+        const res = await axios.post(`${BASE_URL_NEXT}/auth`, body, {
           headers: { "Content-Type": "application/json" },
         });
         console.log(res);
