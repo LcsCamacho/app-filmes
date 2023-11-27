@@ -11,7 +11,6 @@ export default function CardFilme({ filme }: {
         radius="lg"
         className="border-none max-w-[350px] relative w-[350px] h-[550px] hover:scale-105 transition-all"
         isHoverable
-        isPressable
     >
         <Image
             alt="Woman listing to music"
