@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: {
@@ -34,9 +33,7 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col items-center justify-center h-full">
             <Navbar />
-            <main className="container w-full flex ">
-              {children}
-            </main>
+            <main className="container w-full flex">{children}</main>
             <footer className="w-full flex items-center justify-center py-3 mt-auto">
               <Link
                 isExternal

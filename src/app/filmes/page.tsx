@@ -4,24 +4,7 @@ import { FilmesServices } from "./services";
 import { Filme } from "./types";
 
 export default async function Filmes() {
-  const filme1: Filme = {
-    vod_id: 1,
-    vod_name: "Filme 1",
-    type_id: 1,
-    type_name: "Filme",
-    vod_class: "18",
-    vod_content: "Conteudo",
-    vod_pic: "https://image.tmdb.org/t/p/w500/6KErczPBROQty7QoIsaa6wJYXZi.jpg",
-    vod_play_url: "https://www.youtube.com/watch?v=6KErczPBROQty7QoIsaa6wJYXZi",
-  };
-
-  const filmesMock = {
-    list: [filme1],
-  };
-
-  const filmes = await FilmesServices.getWithIds([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-  ]);
+  const filmes = await FilmesServices.getLastHours(24);
 
   return (
     <div className="w-full h-full">
