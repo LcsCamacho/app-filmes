@@ -26,22 +26,6 @@ export const siteConfig = {
 			label: "Séries",
 			href: "/series",
 		},
-		{
-			label: "Profile",
-			href: "/profile",
-		},
-		{
-			label: "Settings",
-			href: "/settings",
-		},
-		{
-			label: "Help & Feedback",
-			href: "/help-feedback",
-		},
-		{
-			label: "Logout",
-			href: "/logout",
-		},
 	],
 	links: {
 		github: "https://github.com/lcscamacho",

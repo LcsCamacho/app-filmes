@@ -7,7 +7,6 @@ import {
 	NavbarItem,
 	NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
@@ -94,6 +93,7 @@ export const Navbar = () => {
 						<GithubIcon className="text-default-500" />
 					</Link>
 					<ThemeSwitch />
+					<LogoutButton color="danger" />
 				</NavbarItem>
 			</NavbarContent>
 
@@ -103,31 +103,31 @@ export const Navbar = () => {
 				</Link>
 				<ThemeSwitch />
 				<NavbarMenuToggle />
+
 			</NavbarContent>
 
 			<NavbarMenu>
 				{searchInput}
 				<div className="mx-4 mt-2 flex flex-col gap-2">
-					{siteConfig.navMenuItems.map((item, index) => (
-						<NavbarMenuItem key={`${item}-${index}`}>
-							<Link
-								color={
-									index === 2
-										? "primary"
-										: index === siteConfig.navMenuItems.length - 1
-											? "danger"
-											: "foreground"
-								}
-								href="#"
-								size="lg"
-							>
-								{item.label}
-							</Link>
-						</NavbarMenuItem>
-					))}
-				</div>
-				<div>
-					<LogoutButton />
+					{siteConfig.navMenuItems.map((item, index) => {
+
+						return (
+							(
+								<NavbarMenuItem key={`${item}-${index}`}>
+									<Link
+										color={"foreground"}
+										href="#"
+										size="lg"
+									>
+										{item.label}
+									</Link>
+								</NavbarMenuItem>
+							)
+						)
+					})}
+					<NavbarMenuItem >
+						<LogoutButton color="danger" />
+					</NavbarMenuItem>
 				</div>
 			</NavbarMenu>
 		</NextUINavbar>
