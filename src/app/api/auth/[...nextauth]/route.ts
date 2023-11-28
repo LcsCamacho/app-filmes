@@ -21,7 +21,6 @@ const nextAuthOptions: NextAuthOptions = {
         const res = await axios.post(`${BASE_URL_NEXT}/auth`, body, {
           headers: { "Content-Type": "application/json" },
         });
-        console.log(res);
         // If no error and we have user data, return it
         if (res.status === 200) {
           return res.data;
@@ -36,18 +35,18 @@ const nextAuthOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      user && (token.user = user)
-      return token
+      user && (token.user = user);
+      return token;
     },
     async session({ session, token }) {
       return {
         ...session,
         iat: token.iat,
         exp: token.exp,
-        jti: token.jti
-      }
+        jti: token.jti,
+      };
     },
-  }
+  },
 };
 
 const handler = NextAuth(nextAuthOptions);
