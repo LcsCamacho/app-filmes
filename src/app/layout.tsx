@@ -31,9 +31,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${PoppinsFont.className} min-h-screen`}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col items-center justify-center h-full">
-            <main className="container w-full flex">{children}</main>
-          </div>
+          <main className="w-screen flex">{children}</main>
         </Providers>
       </body>
     </html>

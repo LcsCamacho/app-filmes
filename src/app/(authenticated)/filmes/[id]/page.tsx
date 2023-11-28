@@ -1,4 +1,4 @@
-import { Row } from "../../../components/row";
+import { Row } from '../../../../components/row';
 import HeaderPageFilmes from "../components/Header";
 import { FilmesServices } from "../services";
 
@@ -10,7 +10,7 @@ interface FilmeDetailsProps {
 export default async function FilmeDetails({ params }: FilmeDetailsProps) {
   const id = params.id;
   const filme = await FilmesServices.getWithIds([id]);
-  const score = filme.list[0].vod_score;
+  const score = Number(filme.list[0].vod_score);
   const urls = filme.list[0].vod_play_url;
   const url = urls.split("#")[0].split("$")[1];
   console.log(url);
@@ -38,13 +38,12 @@ export default async function FilmeDetails({ params }: FilmeDetailsProps) {
         <Row>
           <p className="text-gray-500">Nota:</p>
           <p
-            className={`${
-              score <= 4
-                ? "bg-red-500"
-                : score <= 7
+            className={`${score <= 4
+              ? "bg-red-500"
+              : score <= 7
                 ? "bg-warning-300 light:bg-warning-600"
                 : "bg-green-500"
-            } w-fit rounded p-2 `}
+              } w-fit rounded p-2 `}
           >
             {score}
           </p>

@@ -24,7 +24,7 @@ export const SignInForm = () => {
         console.log(responseAuth.error);
         return;
       }
-      router.replace("/home");
+      router.replace("/filmes");
     }
   };
   return (
@@ -67,12 +67,12 @@ export const SignInForm = () => {
           >
             Login
           </Button>
-            <a className="text-white hover:underline" href="#">
-              Esqueci a senha
-            </a>
-            <a className="text-white hover:underline" href="#">
-              Cadastrar
-            </a>
+          <a className="text-white hover:underline" href="#">
+            Esqueci a senha
+          </a>
+          <a className="text-white hover:underline" href="#">
+            Cadastrar
+          </a>
         </footer>
       </form>
     </div>

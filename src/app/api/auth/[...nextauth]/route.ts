@@ -15,7 +15,7 @@ const nextAuthOptions: NextAuthOptions = {
           placeholder: "Password",
         },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         console.log("AUTHORIZE");
         const body = JSON.stringify(credentials);
         const res = await axios.post(`${BASE_URL_NEXT}/auth`, body, {
@@ -34,6 +34,18 @@ const nextAuthOptions: NextAuthOptions = {
   pages: {
     signIn: "/",
   },
+  callbacks: {
+    async jwt({ token, user }) {
+      user && (token.user = user)
+      console.log(`jwt token: ${token.token}`)
+      return token
+    },
+    async session({ session, token }) {
+      session = token.user as any
+      console.log("Session callback: " + session)
+      return session
+    },
+  }
 };
 
 const handler = NextAuth(nextAuthOptions);

@@ -28,6 +28,7 @@ import {
 } from "@/components/icons";
 
 import { Logo } from "@/components/icons";
+import LogoutButton from "@/auth/components/button-loggout";
 
 export const Navbar = () => {
 	const searchInput = (
@@ -124,6 +125,9 @@ export const Navbar = () => {
 							</Link>
 						</NavbarMenuItem>
 					))}
+				</div>
+				<div>
+					<LogoutButton />
 				</div>
 			</NavbarMenu>
 		</NextUINavbar>
