@@ -53,14 +53,14 @@ export default function ModalFilme({
             return (
               <>
                 <ModalBody>
-                  <div className="modal-body-filme flex items-center gap-4 justify-around">
-                    <div className="image w-2/5 h-[450px]">
+                  <div className="modal-body-filme flex items-center gap-10 justify-center">
+                    <div className="image w-max h-[450px]">
                       <Image
                         width={500}
                         height={250}
                         src={filme?.vod_pic}
                         alt="imagem do filme"
-                        className="rounded-xl w-full h-[450px] object-cover border border-white max-h-[450px]"
+                        className="rounded-xl w-full h-[450px] object-contain max-h-[450px]"
                       />
                     </div>
                     <div className="content w-1/2 h-full flex flex-col justify-start items-start gap-4 py-4">
