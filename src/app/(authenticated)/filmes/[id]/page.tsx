@@ -2,7 +2,9 @@ import { Col } from "@/components/col";
 import { Row } from "@/components/row";
 import HeaderPageFilmes from "../components/Header";
 import { FilmesServices } from "../services";
-import IframeFilme from "./components/playerFilme";
+import Player from "./components/playerFilme";
+import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import TabsSeasons from "./components/tabsSeasons";
 
 interface FilmeDetailsProps {
   params: {
@@ -13,8 +15,23 @@ export default async function FilmeDetails({ params }: FilmeDetailsProps) {
   const id = params.id;
   const filme = await FilmesServices.getWithIds([id]);
   const score = Number(filme.list[0].vod_score);
-  const urls = filme.list[0].vod_play_url.split("#");
-  console.log(urls);
+  const urlsUnformated = filme.list[0].vod_play_url.split("#");
+  const seasons: {
+    [key: string]: { url: string }[];
+  } = {};
+
+  for (const episode of urlsUnformated) {
+    const [seasonEpisode, url] = episode.split("$");
+    const [season] = seasonEpisode.split(" ");
+
+    // Cria a temporada se ainda não existir
+    if (!seasons[season]) {
+      seasons[season] = [];
+    }
+
+    // Adiciona o episódio à temporada
+    seasons[season].push({ url });
+  }
 
   return (
     <div className="flex flex-col gap-4 w-full custom-container">
@@ -64,23 +81,10 @@ export default async function FilmeDetails({ params }: FilmeDetailsProps) {
       </div>
 
       <div className="content w-full">
-        <div className="episodios w-full cards-container">
-          {urls.map((url, index) => {
-            url = url.split("$")[1];
-            return (
-              <div
-                key={index}
-                suppressHydrationWarning
-                className="episodio flex flex-col gap-2 p-4 relative shadow-md card h-[500px]"
-              >
-                <p className="text-2xl font-semibold text-white z-10">
-                  Episódio {index + 1}
-                </p>
-                <IframeFilme url={url} pic={filme.list[0].vod_pic} />
-              </div>
-            );
-          })}
+        <div className="tabs-container w-full flex gap-4 flex-col">
+          <TabsSeasons seasons={seasons} />
         </div>
+        <div className="episodios w-full cards-container"></div>
       </div>
     </div>
   );
