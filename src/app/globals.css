@@ -88,6 +88,7 @@ span {
 
 .bg-banner-filme {
   background: linear-gradient(to bottom, #19181700, #000000ce);
+  width: 100%;
 }
 
 .bg-banner-filme::before {
@@ -102,6 +103,12 @@ span {
   opacity: 1;
 }
 
+.custom-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 
 .modal-filme {
   margin: 0 !important;
@@ -132,10 +139,16 @@ span {
 
 .cards-filmes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   grid-template-rows: auto;
   grid-gap: 1rem;
+}
 
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+  grid-template-rows: auto;
+  grid-gap: 1rem;
 }
 
 .card-filme {

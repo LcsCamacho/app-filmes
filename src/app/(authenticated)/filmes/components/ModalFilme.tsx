@@ -44,7 +44,7 @@ export default function ModalFilme({
           backdrop:
             "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
         }}
-        className="w-screen max-w-[100vw] overflow-auto h-5/6 md:h-3/6  dark:bg-neutral-900 light:bg-slate-100 z-50 modal-filme"
+        className="w-screen max-w-[100vw] overflow-auto h-5/6 md:h-2/3 lg:h-1/2  dark:bg-neutral-900 light:bg-slate-100 z-50 modal-filme"
         disableAnimation
         placement="bottom"
       >
@@ -87,9 +87,7 @@ export default function ModalFilme({
                             : ""}
                         </p>
                       </Row>
-                      <p className="max-w-full max-[768px]:max-w-[300px]">
-                        {filme?.vod_content}
-                      </p>
+                      <p className="max-w-full ">{filme?.vod_content}</p>
                       <Row className="items-center">
                         <Button className="bg-purple text-white ">
                           <Link

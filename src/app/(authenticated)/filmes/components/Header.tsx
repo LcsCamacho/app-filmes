@@ -21,8 +21,10 @@ export default function HeaderPageFilmes({
     : filme.vod_play_url.includes("S01")
     ? 1
     : undefined;
+  const score = Number(filme.vod_score);
+
   return (
-    <div className="w-full h-96 relative flex flex-col p-8 bg-neutral-900 bg-banner-filme">
+    <div className="max-w-screen w-full h-96 relative flex flex-col bg-neutral-900 bg-banner-filme">
       <Image
         src={filme.vod_pic || bg}
         width={1920}
@@ -41,13 +43,13 @@ export default function HeaderPageFilmes({
             ? qtdSeasons + ` Temporada${qtdSeasons > 1 ? "s" : ""}`
             : ""}
         </p>
-        <div className="mt-4 flex items-center  gap-3">
+        <div className="mt-4 flex items-center gap-3">
           {showWatchNow && (
             <Link href={`/filmes/${filme.vod_id}`}>
               <Button className="bg-purple text-white">Watch now</Button>
             </Link>
           )}
-          <HeartBtn />
+          <HeartBtn liked={score > 7} />
         </div>
       </div>
     </div>
