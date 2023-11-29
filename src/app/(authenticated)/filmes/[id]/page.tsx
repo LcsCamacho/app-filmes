@@ -11,6 +11,12 @@ interface FilmeDetailsProps {
     id: string;
   };
 }
+const seasons2: {
+  [key: string]: { url: string }[];
+} = {};
+
+export type Seasons = typeof seasons2;
+
 export default async function FilmeDetails({ params }: FilmeDetailsProps) {
   const id = params.id;
   const filme = await FilmesServices.getWithIds([id]);
@@ -34,11 +40,11 @@ export default async function FilmeDetails({ params }: FilmeDetailsProps) {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full custom-container">
+    <div className="flex flex-col gap-4 w-full">
       <HeaderPageFilmes filmeSelecionado={filme.list[0]} showWatchNow={false} />
-      <div className="desc w-full flex flex-col gap-6  p-4">
+      <div className="desc w-full flex flex-col gap-6 custom-container">
         <h3 className="text-4xl font-semibold mt-4">Detalhes do filme</h3>
-        <Row className="">
+        <Row className="items-start justify-start">
           <Col>
             {filme.list[0].vod_writer && (
               <Row gap={2} className="justify-start w-full">
@@ -80,9 +86,9 @@ export default async function FilmeDetails({ params }: FilmeDetailsProps) {
         </Row>
       </div>
 
-      <div className="content w-full">
+      <div className="content w-full p-4 custom-container">
         <div className="tabs-container w-full flex gap-4 flex-col">
-          <TabsSeasons seasons={seasons} />
+          <TabsSeasons id={id} seasons={seasons} pic={filme.list[0].vod_pic} />
         </div>
         <div className="episodios w-full cards-container"></div>
       </div>

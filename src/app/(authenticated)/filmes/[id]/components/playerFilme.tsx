@@ -17,11 +17,7 @@ export default function PlayerFilme({ url, pic }: PlayerFilmeProps) {
   });
 
   return (
-    <div
-      className="w-full h-[500px]"
-      suppressHydrationWarning
-      onSuspend={() => setPlaying(false)}
-    >
+    <div className="w-full h-full flex-1" suppressHydrationWarning>
       <ReactPlayer
         url={url}
         controls={true}

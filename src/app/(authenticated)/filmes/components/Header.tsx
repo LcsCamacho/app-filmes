@@ -33,7 +33,7 @@ export default function HeaderPageFilmes({
         className="absolute inset-0 w-full h-full object-cover object-center "
       />
 
-      <div className="mt-auto z-10 flex flex-col gap-3">
+      <div className="mt-auto p-4 z-10 flex flex-col gap-3 custom-container w-full">
         <p className="text-white font-semibold text-5xl mb-4">
           {filme.vod_name}
         </p>

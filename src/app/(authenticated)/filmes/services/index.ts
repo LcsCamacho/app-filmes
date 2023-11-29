@@ -5,7 +5,7 @@ import { RequestFilmes, RequestFilme } from "../types";
 export const FilmesServices = {
   getAll: async () => {
     const api = UseApiPrivate();
-    const response = await api.get("/filmes");
+    const response = await api.get<RequestFilmes>("/filmes");
     return response.data;
   },
   getWithIds: async (ids: number[] | string[]) => {
@@ -20,6 +20,13 @@ export const FilmesServices = {
     const api = UseApiPrivate();
     const response = await api.get<RequestFilmes>(
       `/filmes?ac=videolist&h=${hour}`
+    );
+    return response.data;
+  },
+  getPerPage: async (page: number | string) => {
+    const api = UseApiPrivate();
+    const response = await api.get<RequestFilmes>(
+      `/filmes?ac=videolist&pg=${page}`
     );
     return response.data;
   },

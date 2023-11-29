@@ -19,7 +19,7 @@ export default async function PrivateLayout({ children }: PrivateLayoutProps) {
 
   return (
     <Providers>
-      <div className="relative flex flex-col items-center justify-center h-full">
+      <div className="relative flex flex-col items-center justify-center min-h-screen">
         <Navbar />
         {children}
         <footer className="w-full flex items-center justify-center py-3 mt-auto">

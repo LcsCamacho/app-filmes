@@ -79,7 +79,7 @@ export default function ModalFilme({
                         </Row>
                       </Row>
                       <Row>
-                        <p className="text-white">
+                        <p className="dark:text-white light:text-black  text-lg">
                           {filme?.type_name} |{" "}
                           {qtdSeasons
                             ? qtdSeasons +

@@ -22,7 +22,7 @@ export default function CardFilme({
     >
       <Image
         alt="Woman listing to music"
-        className="object-contain h-full absolute -z-10 inset-0"
+        className="object-cover h-full absolute -z-10 inset-0"
         height={550}
         src={filme.vod_pic}
         width={350}

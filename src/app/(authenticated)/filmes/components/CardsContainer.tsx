@@ -1,15 +1,30 @@
 "use client";
 import { useDisclosure } from "@nextui-org/react";
-import { useState } from "react";
-import { Filme } from "../types";
+import { useState, useEffect } from "react";
+import { Filme, RequestFilmes } from "../types";
 import CardFilme from "./Card";
 import ModalFilme from "./ModalFilme";
-
-export default function CardsContainer({ filmes }: { filmes: Filme[] }) {
+import { Pagination } from "@nextui-org/react";
+import { FilmesServices } from "../services";
+interface Props {
+  requestFilmes: RequestFilmes;
+}
+export default function CardsContainer({ requestFilmes }: Props) {
   const [filmeSelecionado, setFilmeSelecionado] = useState<Filme | undefined>(
     undefined
   );
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [filmes, setFilmes] = useState<Filme[]>(requestFilmes.list);
+  const [page, setPage] = useState<number>(requestFilmes.page);
+
+  useEffect(() => {
+    (async () => {
+      console.log("page", page);
+      const requestFilmes = await FilmesServices.getPerPage(page);
+      console.log("requestFilmes", requestFilmes);
+      setFilmes(requestFilmes.list);
+    })();
+  }, [page]);
 
   return (
     <>
@@ -32,6 +47,18 @@ export default function CardsContainer({ filmes }: { filmes: Filme[] }) {
             />
           );
         })}
+      </div>
+      <div className="pagination w-full flex justify-center items-center">
+        <Pagination
+          isCompact
+          showControls
+          page={page}
+          onChange={setPage}
+          total={requestFilmes.pagecount}
+          className=""
+          color="secondary"
+          initialPage={1}
+        />
       </div>
     </>
   );
