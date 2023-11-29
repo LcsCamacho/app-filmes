@@ -1,14 +1,6 @@
 "use client";
-import {
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-  useDisclosure,
-  ModalContent,
-  Button,
-} from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useDisclosure } from "@nextui-org/react";
+import { useState } from "react";
 import { Filme } from "../types";
 import CardFilme from "./Card";
 import ModalFilme from "./ModalFilme";
@@ -27,7 +19,7 @@ export default function CardsContainer({ filmes }: { filmes: Filme[] }) {
         onOpenChange={onOpenChange}
         setFilmeSelecionado={(filme) => setFilmeSelecionado(filme)}
       />
-      <div className="p-4 flex flex-wrap gap-4 w-full">
+      <div className="p-4 cards-filmes-container gap-4 w-full">
         {filmes.map((filme) => {
           return (
             <CardFilme

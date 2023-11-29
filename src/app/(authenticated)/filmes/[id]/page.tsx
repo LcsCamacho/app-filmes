@@ -45,7 +45,7 @@ export default async function FilmeDetails({ params }: FilmeDetailsProps) {
                     : score <= 7
                     ? "bg-warning-300 light:bg-warning-600"
                     : "bg-green-500"
-                } w-fit rounded p-2 h-fit flex items-center justify-center`}
+                } w-fit rounded p-2 h-8 flex items-center justify-center`}
               >
                 {score}
               </p>

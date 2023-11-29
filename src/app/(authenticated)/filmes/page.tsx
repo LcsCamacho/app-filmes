@@ -1,4 +1,3 @@
-import CardFilme from "./components/Card";
 import CardsContainer from "./components/CardsContainer";
 import HeaderPageFilmes from "./components/Header";
 import { FilmesServices } from "./services";
@@ -8,7 +7,7 @@ export default async function Filmes() {
 
   return (
     <div className="w-full h-full">
-      <HeaderPageFilmes filmeSelecionado={filmes.list[0]} />
+      <HeaderPageFilmes filmeSelecionado={filmes.list[5]} />
       <div className="cards p-2 mt-6 h-full">
         <h2 className="text-white font-semibold text-lg">Trending</h2>
         <CardsContainer filmes={filmes.list} />

@@ -8,7 +8,11 @@ export const Row = ({
   gap?: number;
 }) => {
   return (
-    <div className={`flex gap-${gap || "4"} ${className || ""}`}>
+    <div
+      className={`flex flex-wrap items-start justify-start gap-${gap || "4"} ${
+        className || ""
+      }`}
+    >
       {children}
     </div>
   );

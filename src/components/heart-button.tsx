@@ -1,7 +1,6 @@
 "use client";
-import HearthFillSvg from "/public/svgs/heartFill.svg";
 import HearthSvg from "/public/svgs/heart.svg";
-
+import HearthFillSvg from "/public/svgs/heartFill.svg";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 
@@ -20,7 +19,7 @@ export const HeartBtn = ({
 }) => {
   return (
     <Button
-      className={`bg-white min-w-[40px] p-0 hearth-button ${className}`}
+      className={`bg-white min-w-[40px] button-heart p-0 hearth-button ${className}`}
       onClick={onClick}
     >
       <Image

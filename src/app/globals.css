@@ -11,12 +11,14 @@
 body {
   overflow-x: hidden;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
+
   a,
   h1,
   h2,
@@ -29,6 +31,7 @@ a {
     color: white;
   }
 }
+
 a,
 h1,
 h2,
@@ -40,27 +43,31 @@ p,
 span {
   line-height: 1.6;
 }
+
 .dark-linear-gradient {
-  background: linear-gradient(
-    24deg,
-    #6100c2 1.89%,
-    #1c171e 75.65%,
-    #191817 78.98%
-  );
+  background: linear-gradient(24deg,
+      #6100c2 1.89%,
+      #1c171e 75.65%,
+      #191817 78.98%);
 }
+
 .text-white {
   color: #fff;
   opacity: 1;
 }
+
 .letter-spacing-1 {
   letter-spacing: 4px;
 }
+
 .letter-spacing-2 {
   letter-spacing: 8px;
 }
+
 .letter-spacing-3 {
   letter-spacing: 12px;
 }
+
 .sign-in-form {
   width: 600px;
 }
@@ -78,9 +85,11 @@ span {
 .w-60px {
   width: 60px;
 }
+
 .bg-banner-filme {
   background: linear-gradient(to bottom, #19181700, #000000ce);
 }
+
 .bg-banner-filme::before {
   background: linear-gradient(to bottom, #19181700, #000000ce);
   content: "";
@@ -93,9 +102,6 @@ span {
   opacity: 1;
 }
 
-.card {
-  transition: all 0.4s ease-in-out !important;
-}
 
 .modal-filme {
   margin: 0 !important;
@@ -108,6 +114,7 @@ span {
   0% {
     transform: translateY(100%);
   }
+
   100% {
     transform: translateY(-10%);
   }
@@ -116,12 +123,54 @@ span {
 .hearth-button {
   border-radius: 14px;
   border: 1px solid #fff;
-
-  background: linear-gradient(
-    99deg,
-    #fff 3.36%,
-    rgba(255, 255, 255, 0) 238.16%
-  );
+  background: linear-gradient(99deg,
+      #fff 3.36%,
+      rgba(255, 255, 255, 0) 238.16%);
 
   backdrop-filter: blur(10px);
+}
+
+.cards-filmes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+
+}
+
+.card-filme {
+  transition: all 0.4s ease-in-out !important;
+  aspect-ratio: 2/3;
+}
+
+@media screen and (max-width: 600px) {
+
+  .card-filme,
+  .card-filme img {
+    max-width: 100%;
+    max-height: 250px;
+  }
+
+  .button-heart img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .button-heart {
+    border-radius: 12px;
+  }
+
+}
+
+.image-modal-filme {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media screen and (max-height: 750px) {
+  .image-modal-filme {
+    max-height: 60vh;
+  }
 }

@@ -1,17 +1,9 @@
 import { Button } from "@nextui-org/button";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Link,
-} from "@nextui-org/react";
-import { Filme } from "../types";
+import { Link, Modal, ModalBody, ModalContent } from "@nextui-org/react";
 import Image from "next/image";
-import { Row } from "../../../../components/row";
-import HearthSvg from "/public/svgs/heartFill.svg";
 import { HeartBtn } from "../../../../components/heart-button";
+import { Row } from "../../../../components/row";
+import { Filme } from "../types";
 import StarSvg from "/public/svgs/star.svg";
 
 interface ModalFilmeProps {
@@ -29,7 +21,15 @@ export default function ModalFilme({
 }: ModalFilmeProps) {
   if (!filme) return <></>;
   const score = Number(filme.vod_score);
-
+  const qtdSeasons = filme.vod_play_url.includes("S04")
+    ? 4
+    : filme.vod_play_url.includes("S03")
+    ? 3
+    : filme.vod_play_url.includes("S02")
+    ? 2
+    : filme.vod_play_url.includes("S01")
+    ? 1
+    : undefined;
   return (
     <>
       <Modal
@@ -44,7 +44,7 @@ export default function ModalFilme({
           backdrop:
             "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
         }}
-        className="w-screen max-w-[100vw] pb-4 h-3/6 dark:bg-neutral-900 light:bg-slate-100 z-50 modal-filme"
+        className="w-screen max-w-[100vw] overflow-auto h-5/6 md:h-3/6  dark:bg-neutral-900 light:bg-slate-100 z-50 modal-filme"
         disableAnimation
         placement="bottom"
       >
@@ -53,39 +53,45 @@ export default function ModalFilme({
             return (
               <>
                 <ModalBody>
-                  <div className="modal-body-filme flex items-center gap-10 justify-center">
-                    <div className="image w-max h-[450px]">
+                  <div className="modal-body-filme h-full flex items-center md:gap-10 justify-center flex-col md:flex-row gap-4">
+                    <div className="image w-max h-full max-[1000px]:flex max-[1000px]:items-center max-[1000px]:justify-center">
                       <Image
                         width={500}
                         height={250}
                         src={filme?.vod_pic}
                         alt="imagem do filme"
-                        className="rounded-xl w-full h-[450px] object-contain max-h-[450px]"
+                        className="rounded-xl image-modal-filme w-full h-full object-contain max-h-[450px]"
                       />
                     </div>
-                    <div className="content w-1/2 h-full flex flex-col justify-start items-start gap-4 py-4">
-                      <Row className="justify-center items-center w-full pr-3">
-                        <h1 className="text-5xl">{filme?.vod_name}</h1>{" "}
-                        <Row className="ml-auto" gap={2}>
-                          <p className="text-gray-500">
-                            <Image
-                              src={StarSvg}
-                              alt="heart"
-                              width={20}
-                              height={20}
-                            />
-                          </p>
+                    <div className="content w-fit items-start md:justify-center lg:justify-start md:w-1/2 h-full flex flex-col gap-4 py-2">
+                      <Row className="items-center">
+                        <h1 className="text-5xl max-[600px]:text-4xl">
+                          {filme?.vod_name}
+                        </h1>{" "}
+                        <Row className="ml-auto max-[1000px]:m-0" gap={2}>
+                          <Image
+                            src={StarSvg}
+                            alt="heart"
+                            width={20}
+                            height={20}
+                          />
                           <p className={""}>{score}/10</p>
                         </Row>
                       </Row>
                       <Row>
                         <p className="text-white">
-                          {filme?.type_name} | 2h 38m
+                          {filme?.type_name} |{" "}
+                          {qtdSeasons
+                            ? qtdSeasons +
+                              ` Temporada${qtdSeasons > 1 ? "s" : ""}`
+                            : ""}
                         </p>
                       </Row>
-                      <p>{filme?.vod_content}</p>
-                      <Row>
-                        <Button className="bg-purple text-white">
+                      <p className="max-w-full max-[768px]:max-w-[300px]">
+                        {filme?.vod_content}
+                      </p>
+                      <Row className="items-center">
+                        <Button className="bg-purple text-white ">
                           <Link
                             className="text-white"
                             href={"/filmes/" + filme.vod_id}
@@ -93,7 +99,7 @@ export default function ModalFilme({
                             Assistir agora
                           </Link>
                         </Button>
-                        <HeartBtn />
+                        <HeartBtn liked={score > 7} />
                       </Row>
                     </div>
                   </div>
