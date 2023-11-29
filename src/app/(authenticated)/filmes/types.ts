@@ -18,6 +18,9 @@ export interface RequestFilme {
 }
 
 export interface Filme {
+  backdrop_path: string;
+  poster_path: string;
+  released_date: string;
   vod_score: string | number;
   vod_writer: string;
   vod_tag: string;

@@ -24,9 +24,9 @@ export default function HeaderPageFilmes({
   const score = Number(filme.vod_score);
 
   return (
-    <div className="max-w-screen w-full h-96 relative flex flex-col bg-neutral-900 bg-banner-filme">
+    <div className="max-w-screen w-full h-[500px] relative flex flex-col bg-neutral-900 bg-banner-filme">
       <Image
-        src={filme.vod_pic || bg}
+        src={filme.backdrop_path || filme.poster_path || filme.vod_pic || bg}
         width={1920}
         height={1080}
         alt="background filmes "
@@ -38,7 +38,7 @@ export default function HeaderPageFilmes({
           {filme.vod_name}
         </p>
         <p className="text-white">
-          2022 | {filme.type_name} |{" "}
+          {filme.released_date || 2022} | {filme.type_name} |{" "}
           {qtdSeasons
             ? qtdSeasons + ` Temporada${qtdSeasons > 1 ? "s" : ""}`
             : ""}

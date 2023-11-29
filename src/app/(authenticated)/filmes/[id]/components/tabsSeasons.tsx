@@ -17,7 +17,7 @@ export default function TabsSeasons({
 }) {
   return (
     <Tabs aria-label="Options">
-      {Object.keys(seasons).map((season) => {
+      {Object.keys(seasons).map((season, index) => {
         return (
           <Tab
             onClick={() => {
@@ -25,8 +25,8 @@ export default function TabsSeasons({
               console.log(tamanhoTela);
               window.scrollTo(0, tamanhoTela || 400);
             }}
-            key={season}
-            title={season}
+            key={`Temporada ${index + 1}`}
+            title={`Temporada ${index + 1}`}
             className="flex gap-4 columns-tabs"
           >
             <div className="w-full cards-episodes">
@@ -40,7 +40,7 @@ export default function TabsSeasons({
                         gap={2}
                         className="items-center flex-nowrap justify-center"
                       >
-                        <h3>Ep: {index + 1}</h3>
+                        <h3>EP: {index + 1}</h3>
                         <Link
                           href={`/filmes/${id}/${seasonId}?id=${epId}&pic=${pic}`}
                         >

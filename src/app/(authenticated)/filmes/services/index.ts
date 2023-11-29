@@ -1,6 +1,6 @@
 import UseApiPrivate from "@/services/apiPrivate";
-import { type } from "os";
 import { RequestFilmes, RequestFilme } from "../types";
+import { cache } from "react";
 
 export const FilmesServices = {
   getAll: async () => {

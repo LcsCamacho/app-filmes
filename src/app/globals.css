@@ -141,6 +141,12 @@ span {
   backdrop-filter: blur(10px);
 }
 
+@media (prefers-color-scheme: light) {
+  .hearth-button {
+    border: 1px solid #6100c2;
+  }
+}
+
 .cards-filmes-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

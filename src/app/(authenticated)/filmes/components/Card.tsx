@@ -27,7 +27,6 @@ export default function CardFilme({
         src={filme.vod_pic}
         width={350}
         onClick={() => {
-          console.log("clicou");
           handleClickCard(filme);
         }}
       />

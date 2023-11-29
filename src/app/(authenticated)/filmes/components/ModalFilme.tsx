@@ -56,8 +56,8 @@ export default function ModalFilme({
                   <div className="modal-body-filme h-full flex items-center md:gap-10 justify-center flex-col md:flex-row gap-4">
                     <div className="image w-max h-full max-[1000px]:flex max-[1000px]:items-center max-[1000px]:justify-center">
                       <Image
-                        width={500}
-                        height={250}
+                        width={300}
+                        height={450}
                         src={filme?.vod_pic}
                         alt="imagem do filme"
                         className="rounded-xl image-modal-filme w-full h-full object-contain max-h-[450px]"

@@ -16,7 +16,6 @@ export const nextAuthOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        console.log("AUTHORIZE");
         const body = JSON.stringify(credentials);
         const res = await axios.post(`${BASE_URL_NEXT}/auth`, body, {
           headers: { "Content-Type": "application/json" },
