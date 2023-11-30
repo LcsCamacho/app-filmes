@@ -15,7 +15,7 @@ export default function PlayerFilme({ url, pic }: PlayerFilmeProps) {
       },
     },
   });
-
+  console.log(url);
   return (
     <div className="w-full h-full flex-1" suppressHydrationWarning>
       <ReactPlayer

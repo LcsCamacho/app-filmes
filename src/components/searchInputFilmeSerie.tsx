@@ -3,14 +3,22 @@ import { Kbd } from "@nextui-org/kbd";
 import { Input } from "@nextui-org/input";
 import { SearchIcon } from "./icons";
 import { useRef } from "react";
+import { FilmesServices } from "../app/(authenticated)/filmes/services";
+import { useRouter } from "next/navigation";
 
 export const SearchInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     const input = inputRef.current;
     if (!input) return;
     console.log(input.value);
+    const result = await FilmesServices.getByName(input.value);
+    console.log(result);
+    if (result) {
+      router.push(`/filmes?name=${result.list[0].vod_id}`);
+    }
   };
   return (
     <Input
@@ -23,8 +31,8 @@ export const SearchInput = () => {
       endContent={
         <Kbd
           onClick={handleSearch}
-          className="hidden lg:inline-block cursor-ponter"
-          keys={["command"]}
+          className="hidden lg:inline-block cursor-pointer"
+          keys={["enter"]}
         ></Kbd>
       }
       labelPlacement="outside"

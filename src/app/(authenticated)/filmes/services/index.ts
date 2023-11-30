@@ -30,4 +30,11 @@ export const FilmesServices = {
     );
     return response.data;
   },
+  getByName: async (name: string) => {
+    const api = UseApiPrivate();
+    const response = await api.get<RequestFilmes>(
+      `/filmes?ac=videolist&wd=${name}`
+    );
+    return response.data;
+  },
 };
