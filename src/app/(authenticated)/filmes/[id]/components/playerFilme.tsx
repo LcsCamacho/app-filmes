@@ -4,8 +4,9 @@ import ReactPlayer, { Config } from "react-player";
 interface PlayerFilmeProps {
   url: string;
   pic: string;
+  iframe?: boolean;
 }
-export default function PlayerFilme({ url, pic }: PlayerFilmeProps) {
+export default function PlayerFilme({ url, pic, iframe }: PlayerFilmeProps) {
   const [playing, setPlaying] = useState(true);
   const config = useRef<Config>({
     file: {
@@ -18,16 +19,27 @@ export default function PlayerFilme({ url, pic }: PlayerFilmeProps) {
   console.log(url);
   return (
     <div className="w-full h-full flex-1" suppressHydrationWarning>
-      <ReactPlayer
-        url={url}
-        controls={true}
-        playing={playing}
-        stopOnUnmount
-        light={pic}
-        width="100%"
-        height="100%"
-        config={config.current}
-      />
+      {!iframe && (
+        <ReactPlayer
+          url={url}
+          controls={true}
+          playing={playing}
+          stopOnUnmount
+          light={pic}
+          width="100%"
+          height="100%"
+          config={config.current}
+        />
+      )}
+      {iframe && (
+        <iframe
+          src={"https://cineliso.com/player/?url=" + url}
+          title="video"
+          width="100%"
+          height="100%"
+          allowFullScreen
+        />
+      )}
     </div>
   );
 }
