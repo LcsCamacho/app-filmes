@@ -1,4 +1,3 @@
-"use client";
 import Player from "../components/playerFilme";
 
 interface FilmePlayerProps {
@@ -16,13 +15,12 @@ export default function FilmePlayer({
   params,
   searchParams,
 }: FilmePlayerProps) {
-  const id = params.slug;
-  let query = searchParams.id;
+  const id = params.slug.split("-")[0];
+  const id2 = params.slug.split("-")[1];
   const pic = searchParams.pic;
-  const urlFilme = `https://s2.tmdb.bet/${id}/${query}/index.m3u8`;
+  const urlFilme = `https://s2.tmdb.bet/${id}/${id2}/index.m3u8`;
   console.log({
     id,
-    query,
     pic,
     urlFilme,
   });

@@ -33,6 +33,7 @@ export default function TabsSeasons({
               {seasons[season].map((episode, index) => {
                 const seasonId = episode.url.split("/")[3];
                 const epId = episode.url.split("/")[4];
+
                 return (
                   <Card key={episode.url} className="w-full">
                     <CardBody>
@@ -42,7 +43,7 @@ export default function TabsSeasons({
                       >
                         <h3>EP: {index + 1}</h3>
                         <Link
-                          href={`/filmes/${id}/${seasonId}?id=${epId}&pic=${pic}`}
+                          href={`/filmes/${id}/${seasonId}-${epId}?pic=${pic}`}
                         >
                           <IconModel image={PlaySvg} height={30} width={40} />
                         </Link>
