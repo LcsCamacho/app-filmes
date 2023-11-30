@@ -27,7 +27,7 @@ export default function FilmePlayer({
 
   return (
     <div suppressHydrationWarning className="w-full h-[calc(100vh_-_4rem)]">
-      <Player url={urlFilme} pic={pic} />
+      <Player iframe url={urlFilme} pic={pic} />
     </div>
   );
 }
