@@ -1,6 +1,3 @@
-import { Col } from "@/components/col";
-import { Row } from "@/components/row";
-import ReactPlayer from "react-player";
 import Player from "../components/playerFilme";
 
 interface FilmePlayerProps {
@@ -18,14 +15,19 @@ export default function FilmePlayer({
   params,
   searchParams,
 }: FilmePlayerProps) {
-  const id = params.slug;
-  const query = searchParams.id;
+  const id = params.slug.split("-")[0];
+  const id2 = params.slug.split("-")[1];
   const pic = searchParams.pic;
-  const urlFilme = `https://s2.tmdb.bet/${id}/${query}/index.m3u8`;
+  const urlFilme = `https://s2.tmdb.bet/${id}/${id2}/index.m3u8`;
+  console.log({
+    id,
+    pic,
+    urlFilme,
+  });
 
   return (
     <div suppressHydrationWarning className="w-full h-[calc(100vh_-_4rem)]">
-      <Player url={urlFilme} pic={pic} />
+      <Player iframe url={urlFilme} pic={pic} />
     </div>
   );
 }
